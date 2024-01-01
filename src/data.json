@@ -1,0 +1,24 @@
+{
+    "socialLinks": [
+        {
+            "name": "Twitter",
+            "url": "https://twitter.com/username"
+        },
+        {
+            "name": "Facebook",
+            "url": "https://facebook.com/username"
+        },
+        {
+            "name": "LinkedIn",
+            "url": "https://linkedin.com/in/username"
+        },
+        {
+            "name": "Instagram",
+            "url": "https://instagram.com/username"
+        },
+        {
+            "name": "YouTube",
+            "url": "https://youtube.com/user/username"
+        }
+    ]
+}
