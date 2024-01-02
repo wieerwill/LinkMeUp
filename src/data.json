@@ -33,7 +33,7 @@
         },
         {
             "name": "[Matrix]",
-            "url": "@wieerwill:matrix.org",
+            "url": "https://matrix.to/#/@wieerwill:matrix.org",
             "icon": null,
             "backgroundColor": "#01FF70"
         },
