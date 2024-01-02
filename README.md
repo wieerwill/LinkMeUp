@@ -9,6 +9,7 @@ Welcome to the LinkMeUp project! This is a sleek, lightweight single-page applic
 - **Handlebars Templating**: Pre-compiled Handlebars templates for a JavaScript-free frontend.
 - **Optimized Performance**: Minimized CSS and HTML files, and optimized images for lightning-fast loading.
 - **Accessibility and SEO**: Adherence to web accessibility standards and SEO-friendly structure.
+- **Development Server**: Develop and view the changes on your page in high speed.
 
 ## Organizing the Files
 ```
@@ -34,6 +35,11 @@ To get started with the project:
 3. Install dependencies (if any): `pnpm install`
 
 ## Building and Deployment
+Develope the project using our development script:
+```bash
+pnpm run dev
+```
+
 Build the project using our script:
 ```bash
 pnpm run build

@@ -55,7 +55,20 @@ function copyImages(srcDir, destDir) {
     }
 }
 
-// Compile Handlebars Template
+function compileHeaderTemplate(data) {
+    const headerTemplatePath = path.join(__dirname, 'src', 'templates', 'header-template.hbs');
+    const headerTemplateSource = readFile(headerTemplatePath);
+    const headerTemplate = handlebars.compile(headerTemplateSource);
+    return headerTemplate(data);
+}
+
+function compileFooterTemplate(data) {
+    const footerTemplatePath = path.join(__dirname, 'src', 'templates', 'footer-template.hbs');
+    const footerTemplateSource = readFile(footerTemplatePath);
+    const footerTemplate = handlebars.compile(footerTemplateSource);
+    return footerTemplate(data);
+}
+
 function compileTemplate(templatePath, data) {
     const templateSource = readFile(templatePath);
     const template = handlebars.compile(templateSource);
@@ -65,12 +78,14 @@ function compileTemplate(templatePath, data) {
 // Main build function
 function build() {
     const baseHtmlPath = path.join(__dirname, 'public', 'index.html');
-    const templatePath = path.join(__dirname, 'src', 'templates', 'social-links-template.hbs');
     const dataPath = path.join(__dirname, 'src', 'data.json');
     const cssPath = path.join(__dirname, 'public', 'styles', 'main.css');
     const imagesSrcPath = path.join(__dirname, 'public', 'images');
     const distPath = path.join(__dirname, 'dist');
     const imagesDestPath = path.join(distPath, 'images');
+    const headerTemplatePath = path.join(__dirname, 'src', 'templates', 'header-template.hbs');
+    const linksTemplatePath = path.join(__dirname, 'src', 'templates', 'social-links-template.hbs');
+    const footerTemplatePath = path.join(__dirname, 'src', 'templates', 'footer-template.hbs');
 
     cleanDistDir(distPath);
 
@@ -79,6 +94,11 @@ function build() {
     const baseHtml = readFile(baseHtmlPath);
     let css = readFile(cssPath);
 
+    // Get the current year
+    const currentYear = new Date().getFullYear();
+    // Pass the current year to the Handlebars data
+    data.currentYear = currentYear;
+
     // Output titles from data.json
     data.socialLinks.forEach(link => console.log(link.name));
 
@@ -86,10 +106,16 @@ function build() {
     css = minimizeCSS(css);
 
     // Compile HTML with Handlebars
-    const socialLinksHtml = compileTemplate(templatePath, data);
+    const headerHtml = compileTemplate(headerTemplatePath, data);
+    const socialLinksHtml = compileTemplate(linksTemplatePath, data);
+    const footerHtml = compileTemplate(footerTemplatePath, data);
 
     // Replace placeholder in base HTML with compiled HTML
-    let finalHtml = baseHtml.replace('<!-- Handlebars template will populate this section -->', socialLinksHtml);
+    let finalHtml = baseHtml
+    .replace('<!-- Header template will populate this section -->', headerHtml)
+    .replace('<!-- Handlebars template will populate this section -->', socialLinksHtml)
+    .replace('<!-- Footer template will populate this section -->', footerHtml);
+
 
     finalHtml = inlineCSS(finalHtml, css);
     finalHtml = minimizeHTML(finalHtml);

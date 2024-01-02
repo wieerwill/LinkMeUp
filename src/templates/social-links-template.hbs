@@ -1,6 +1,12 @@
-{{#each socialLinks}}
-<div class="social-link">
-    <h2>{{name}}</h2>
-    <a href="{{url}}" target="_blank">Visit {{name}}</a>
+<div class="link-grid">
+    {{#each socialLinks}}
+    <div class="link" style="background-color: {{backgroundColor}}; color: {{textColor}}">
+        <a href="{{url}}" target="_blank">
+            {{#if icon}}
+            <img src="/images/{{icon}}" alt="{{name}} icon" class="link-icon">
+            {{/if}}
+            <h2>{{name}}</h2>
+        </a>
+    </div>
+    {{/each}}
 </div>
-{{/each}}
