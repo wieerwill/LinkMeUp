@@ -55,20 +55,6 @@ function copyImages(srcDir, destDir) {
     }
 }
 
-function compileHeaderTemplate(data) {
-    const headerTemplatePath = path.join(__dirname, 'src', 'templates', 'header-template.hbs');
-    const headerTemplateSource = readFile(headerTemplatePath);
-    const headerTemplate = handlebars.compile(headerTemplateSource);
-    return headerTemplate(data);
-}
-
-function compileFooterTemplate(data) {
-    const footerTemplatePath = path.join(__dirname, 'src', 'templates', 'footer-template.hbs');
-    const footerTemplateSource = readFile(footerTemplatePath);
-    const footerTemplate = handlebars.compile(footerTemplateSource);
-    return footerTemplate(data);
-}
-
 function compileTemplate(templatePath, data) {
     const templateSource = readFile(templatePath);
     const template = handlebars.compile(templateSource);
@@ -77,12 +63,14 @@ function compileTemplate(templatePath, data) {
 
 // Main build function
 function build() {
+    const distPath = path.join(__dirname, 'dist');
     const baseHtmlPath = path.join(__dirname, 'public', 'index.html');
     const dataPath = path.join(__dirname, 'src', 'data.json');
     const cssPath = path.join(__dirname, 'public', 'styles', 'main.css');
     const imagesSrcPath = path.join(__dirname, 'public', 'images');
-    const distPath = path.join(__dirname, 'dist');
     const imagesDestPath = path.join(distPath, 'images');
+    const faviconSrcPath = path.join(__dirname, 'public', 'favicons');
+    const faviconDestPath = path.join(distPath);
     const headerTemplatePath = path.join(__dirname, 'src', 'templates', 'header-template.hbs');
     const linksTemplatePath = path.join(__dirname, 'src', 'templates', 'social-links-template.hbs');
     const footerTemplatePath = path.join(__dirname, 'src', 'templates', 'footer-template.hbs');
@@ -127,6 +115,7 @@ function build() {
 
     writeFile(path.join(distPath, 'index.html'), finalHtml);
     copyImages(imagesSrcPath, imagesDestPath);
+    copyImages(faviconSrcPath, faviconDestPath)
 }
 
 // Run the build process

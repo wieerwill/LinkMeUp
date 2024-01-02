@@ -1,24 +1,59 @@
 {
+    "header": {
+        "title": "WieErWill",
+        "subtitle": "Programmed for Adventure, Coded for Curiosity"
+    },
+    "footer": {
+        "copyright": "<a href='https://wieerwill.de'>WieErWill</a>"
+    },
     "socialLinks": [
         {
-            "name": "Twitter",
-            "url": "https://twitter.com/username"
+            "name": "WieErWill.de",
+            "url": "https://www.wieerwill.de/",
+            "icon": "globe.svg",
+            "backgroundColor": "#1DA1F2"
         },
         {
-            "name": "Facebook",
-            "url": "https://facebook.com/username"
-        },
-        {
-            "name": "LinkedIn",
-            "url": "https://linkedin.com/in/username"
+            "name": "GitHub",
+            "url": "https://github.com/wieerwill",
+            "icon": "github.svg",
+            "backgroundColor": "#4CAF50"
         },
         {
             "name": "Instagram",
-            "url": "https://instagram.com/username"
+            "url": "https://instagram.com/wieerwill",
+            "icon": "instagram.svg",
+            "backgroundColor": "#FF6B6B"
         },
         {
-            "name": "YouTube",
-            "url": "https://youtube.com/user/username"
+            "name": "LinkedIn",
+            "url": "https://linkedin.com/in/wieerwill",
+            "icon": "linkedin.svg",
+            "backgroundColor": "#39CCCC"
+        },
+        {
+            "name": "[Matrix]",
+            "url": "@wieerwill:matrix.org",
+            "icon": null,
+            "backgroundColor": "#01FF70"
+        },
+        {
+            "name": "Mastodon",
+            "url": "https://chaos.social/@wieerwill",
+            "icon": "mastodon.svg",
+            "backgroundColor": "#2ECC71"
+        },
+        {
+            "name": "Telegram",
+            "url": "https://t.me/wieerwill",
+            "icon": "telegram.svg",
+            "backgroundColor": "#267ed7"
+        },
+        {
+            "name": "Mail",
+            "url": "mailto:robert@wieerwill.de",
+            "icon": "mail.svg",
+            "backgroundColor": "#FF4500"
         }
     ]
 }
