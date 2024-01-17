@@ -83,6 +83,11 @@ function build() {
     const baseHtml = readFile(baseHtmlPath);
     let css = readFile(cssPath);
 
+    if (data.theme != null) {
+        let themeCss = readFile(path.join(__dirname, 'src', 'themes', `${data.theme}.css`))
+        css += themeCss
+    }
+
     // Get the current year
     const currentYear = new Date().getFullYear();
     // Pass the current year to the Handlebars data

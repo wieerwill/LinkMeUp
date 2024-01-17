@@ -1,4 +1,5 @@
 {
+    "theme": "galaxy",
     "head": {
         "title": "LinkMeUp WieErWill",
         "description": "Get all weblinks of WieErWill.",
