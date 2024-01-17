@@ -1,6 +1,6 @@
 # LinkMeUp
 
-Welcome to the LinkMeUp project! This is a sleek, lightweight single-page application designed to consolidate an individual's social media and internet presence into one central location. Built with simplicity and performance in mind, the project uses minimalistic yet powerful web technologies.
+This is a sleek, lightweight single-page application designed to consolidate an individual's social media and internet presence into one central location. Built with simplicity and performance in mind, the project uses minimalistic yet powerful web technologies.
 
 ## Features
 

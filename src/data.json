@@ -1,4 +1,11 @@
 {
+    "head": {
+        "title": "LinkMeUp WieErWill",
+        "description": "Get all weblinks of WieErWill.",
+        "keywords": "social media links, software architecture, web development, single-page application, web performance",
+        "url": "https://link.wieerwill.de/",
+        "logo": "favicons/android-chrome-192x192.png"
+    },
     "header": {
         "title": "WieErWill",
         "subtitle": "Programmed for Adventure, Coded for Curiosity"
@@ -29,6 +36,12 @@
             "name": "LinkedIn",
             "url": "https://linkedin.com/in/wieerwill",
             "icon": "linkedin.svg",
+            "backgroundColor": "#39CCCC"
+        },
+        {
+            "name": "Xing",
+            "url": "https://xing.de/profile/Robert_Jeutter",
+            "icon": "xing.svg",
             "backgroundColor": "#39CCCC"
         },
         {

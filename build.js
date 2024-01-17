@@ -44,7 +44,7 @@ function inlineCSS(html, css) {
 }
 
 function copyImages(srcDir, destDir) {
-    if (!fs.existsSync(destDir)){
+    if (!fs.existsSync(destDir)) {
         fs.mkdirSync(destDir, { recursive: true });
     }
 
@@ -71,6 +71,7 @@ function build() {
     const imagesDestPath = path.join(distPath, 'images');
     const faviconSrcPath = path.join(__dirname, 'public', 'favicons');
     const faviconDestPath = path.join(distPath);
+    const headTemplatePath = path.join(__dirname, 'src', 'templates', 'head-template.hbs');
     const headerTemplatePath = path.join(__dirname, 'src', 'templates', 'header-template.hbs');
     const linksTemplatePath = path.join(__dirname, 'src', 'templates', 'social-links-template.hbs');
     const footerTemplatePath = path.join(__dirname, 'src', 'templates', 'footer-template.hbs');
@@ -87,6 +88,8 @@ function build() {
     // Pass the current year to the Handlebars data
     data.currentYear = currentYear;
 
+    const activeTheme = data.theme;
+
     // Output titles from data.json
     data.socialLinks.forEach(link => console.log(link.name));
 
@@ -94,16 +97,17 @@ function build() {
     css = minimizeCSS(css);
 
     // Compile HTML with Handlebars
+    const headHtml = compileTemplate(headTemplatePath, data);
     const headerHtml = compileTemplate(headerTemplatePath, data);
     const socialLinksHtml = compileTemplate(linksTemplatePath, data);
     const footerHtml = compileTemplate(footerTemplatePath, data);
 
     // Replace placeholder in base HTML with compiled HTML
     let finalHtml = baseHtml
-    .replace('<!-- Header template will populate this section -->', headerHtml)
-    .replace('<!-- Handlebars template will populate this section -->', socialLinksHtml)
-    .replace('<!-- Footer template will populate this section -->', footerHtml);
-
+        .replace('<!-- Head template will populate this section -->', headHtml)
+        .replace('<!-- Header template will populate this section -->', headerHtml)
+        .replace('<!-- Handlebars template will populate this section -->', socialLinksHtml)
+        .replace('<!-- Footer template will populate this section -->', footerHtml);
 
     finalHtml = inlineCSS(finalHtml, css);
     finalHtml = minimizeHTML(finalHtml);

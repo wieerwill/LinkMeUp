@@ -10,12 +10,22 @@ html {
 }
 
 body {
-    margin: 2rem;
+    margin: 2rem 0;
+    width: 100%;
 }
 
 header {
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 0;
+    max-width: 100%;
+}
+
+header h1 {
+    font-size: 4rem;
+}
+
+header h2 {
+    font-size: 2rem;
 }
 
 footer {
@@ -26,9 +36,15 @@ footer {
     padding: 1rem;
 }
 
+footer a {
+    text-decoration: none;
+}
+
 main {
+    padding: 2.5rem;
     margin: 1.7rem auto;
-    max-width: 1000px;
+    max-width: 100%;
+    max-width: 1100px;
     text-align: center;
     align-items: center;
     align-content: center;
@@ -56,7 +72,7 @@ main hr {
 }
 
 .link:hover {
-    transform: scale(1.05);
+    transform: scale(1.15);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -82,4 +98,24 @@ main hr {
 
 .link h2 {
     font-size: 24px;
+}
+
+@media (max-width: 700px) {
+    header {
+        padding: 1rem 0;
+    }
+    main {
+        padding: 0.3rem 1.7rem;
+        margin: 0.7rem auto;
+    }
+    main hr {
+        margin: 1.7rem auto;
+    }
+    footer {
+        text-align: center;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        padding: 1rem;
+    }
 }
