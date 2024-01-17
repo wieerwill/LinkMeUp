@@ -1,11 +1,14 @@
 {
     "theme": "galaxy",
+    "enablePWA": true,
     "head": {
         "title": "LinkMeUp WieErWill",
+        "short_title": "WieErWill",
         "description": "Get all weblinks of WieErWill.",
         "keywords": "social media links, software architecture, web development, single-page application, web performance",
         "url": "https://link.wieerwill.de/",
-        "logo": "favicons/android-chrome-192x192.png"
+        "logo": "android-chrome-192x192.png",
+        "themecolor": "#0078D4"
     },
     "header": {
         "title": "WieErWill",

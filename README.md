@@ -11,6 +11,7 @@ This is a sleek, lightweight single-page application designed to consolidate an 
 - **Handlebars Templating**: Pre-compiled Handlebars templates for a JavaScript-free frontend.
 - **Optimized Performance**: Minimized CSS and HTML files, and optimized images for lightning-fast loading.
 - **Accessibility and SEO**: Adherence to web accessibility standards and SEO-friendly structure.
+- **Full PWA Support**: use browser caching and offline support for quick loading.
 - **Development Server**: Develop and view the changes on your page in high speed.
 
 ## Organizing the Files

@@ -61,16 +61,38 @@ function compileTemplate(templatePath, data) {
     return template(data);
 }
 
+function createManifest(data) {
+    return {
+        name: data.title || 'LinkMeUp',
+        short_name: data.short_title || 'LinkMeUp',
+        description: data.description || 'Get all weblinks of LinkMeUp',
+        start_url: '/',
+        display: 'standalone',
+        background_color: data.backgroundColor || '#ffffff',
+        theme_color: data.themeColor || '#0078D4',
+        icons: [
+            {
+                src: data.logo || '/android-chrome-192x192.png',
+                sizes: '192x192',
+                type: 'image/png',
+                purpose: "maskable"
+            },
+            {
+                src: data.logo2 || "/android-chrome-512x512.png",
+                sizes: "512x512",
+                type: "image/png",
+                purpose: "any"
+            }
+        ],
+    };
+}
+
 // Main build function
 function build() {
     const distPath = path.join(__dirname, 'dist');
     const baseHtmlPath = path.join(__dirname, 'public', 'index.html');
     const dataPath = path.join(__dirname, 'src', 'data.json');
     const cssPath = path.join(__dirname, 'public', 'styles', 'main.css');
-    const imagesSrcPath = path.join(__dirname, 'public', 'images');
-    const imagesDestPath = path.join(distPath, 'images');
-    const faviconSrcPath = path.join(__dirname, 'public', 'favicons');
-    const faviconDestPath = path.join(distPath);
     const headTemplatePath = path.join(__dirname, 'src', 'templates', 'head-template.hbs');
     const headerTemplatePath = path.join(__dirname, 'src', 'templates', 'header-template.hbs');
     const linksTemplatePath = path.join(__dirname, 'src', 'templates', 'social-links-template.hbs');
@@ -117,14 +139,27 @@ function build() {
     finalHtml = inlineCSS(finalHtml, css);
     finalHtml = minimizeHTML(finalHtml);
 
+    let manifest = createManifest(data.head)
+
     // Ensure dist directory exists
     if (!fs.existsSync(distPath)) {
         fs.mkdirSync(distPath);
     }
 
     writeFile(path.join(distPath, 'index.html'), finalHtml);
+    writeFile(path.join(distPath, 'manifest.json'), JSON.stringify(manifest));
+
+    const imagesSrcPath = path.join(__dirname, 'public', 'images');
+    const imagesDestPath = path.join(distPath, 'images');
     copyImages(imagesSrcPath, imagesDestPath);
+
+    const faviconSrcPath = path.join(__dirname, 'public', 'favicons');
+    const faviconDestPath = path.join(distPath);
     copyImages(faviconSrcPath, faviconDestPath)
+
+    const javascriptSrcPath = path.join(__dirname, 'src', 'scripts');
+    const javascriptDestPath = path.join(distPath);
+    copyImages(javascriptSrcPath, javascriptDestPath)
 }
 
 // Run the build process
